@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScript from C++ developer POV</title>
+
+        <meta name="author" content="Sławomir Zborowski">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="white-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        <link rel="stylesheet" href="reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="theme.css" id="theme">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+
+        <style>
+            .reveal section img {
+                border: 0;
+                margin: 0;
+                box-shadow: none;
+            }
+
+            .reveal pre {
+                box-shadow: none;
+            }
+
+            .reveal section h1 {
+                margin: 0;
+                font-size: 60pt;
+            }
+
+            pre.vim-code-block {
+                white-space: pre-wrap;
+                font-family: monospace;
+                color: #000000;
+                background-color: #fff5ee;
+                font-size: 20pt;
+            }
+            .Constant { color: #ff1493; }
+            .Type { color: #2e8b57; font-weight: bold; }
+            .Statement { color: #a52a2a; font-weight: bold; }
+            .LineNr { color: #4d4d4d; background-color: #fff0f5; padding-bottom: 1px; }
+            .Comment { color: #0000cd; }
+            .PreProc { color: #8b008b; }
+            .Identifier { color: #009f9f; }
+
+            #container canvas { width: 806px; height: 568px; }
+
+            a.source {
+                font-family: Courier;
+                font-size: 12pt;
+                color: #666;
+            }
+
+        </style>
+
+        <script src="js/jquery-2.1.4.min.js"></script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+
+                <section>
+                <h1>JavaScript</h1>
+                <h2>from C++ developer perspective</h2>
+                <br />
+                <small>Sławomir Zborowski</small>
+                </section>
+
+                <section>
+                <h2>#GitHub repos</h2>
+                <img src="img/10m-repos.png" />
+                <a class="source">https://github.com/blog/1724-10-million-repositories</a>
+                </section>
+
+                <section>
+                <h2>#programmers (in UK)</h2>
+                <img src="img/statista.png" />
+                <img src="img/uk-no-devs.png" />
+                </section>
+
+                <section>
+                <img src="img/how-come.jpg" />
+                </section>
+
+                <section>
+                <h2>1) HW is evolving, so does SW</h2>
+                <img src="img/punch-tape.jpg" />
+                <a class="source">https://www.staff.ncl.ac.uk/roger.broughton/museum/iomedia/pt1.htm</a>
+                </section>
+
+
+                <section>
+                <h2>1) HW is evolving, so does SW</h2>
+                <img src="img/asm.jpg" />
+                <a class="source">https://uwnthesis.wordpress.com/2014/03/06/how-to-use-objdump-using-gcc-and-c-the-visual-guide/</a>
+                </section>
+
+                <section>
+                <h2>1) HW is evolving, so does SW</h2>
+                <pre class="vimcodeblock"><span class="Type">int</span> foo();
+
+bar() { <span class="Statement">return</span> foo(<span class="Constant">1</span>, <span class="Constant">2</span>, <span class="Constant">.3</span>, <span class="Constant">4</span>); }
+
+foo(a, b, c, d)
+    <span class="Type">int</span> a, b;
+    <span class="Type">register</span> <span class="Type">float</span> c;
+{ <span class="Statement">return</span> <span class="Constant">0</span>; }
+</pre>
+                </section>
+
+                <section>
+                <h2>1) HW is evolving, so does SW</h2>
+                <img src="img/jvm.jpg" /><br />
+                <a class="source">http://crunchify.com/java-how-to-get-the-start-time-of-a-jvm/</a>
+                </section>
+
+                <section>
+                <h2>2) software engineering becomes popular profession</h2>
+                <div class="fragment">
+                    <img src="img/open-space.jpg" /><br />
+                    <a class="source">http://newpubmarketing.over-blog.fr/archive/2015-06/</a>
+                </div>
+                </section>
+
+                <section>
+                <h2>#GitHub repos</h2>
+                <img src="img/10m-repos.png" />
+                <a class="source">https://github.com/blog/1724-10-million-repositories</a>
+                </section>
+
+                <section>
+                <h2>where this led us so far?</h2>
+                <img src="img/hamilton.gif" style="width: 45%;" /><br />
+                <a class="source">Margaret Hamilton, Apollo 11 / src: NASA</a>
+                </section>
+
+                <section>
+                <h2>where this led us so far?</h2>
+                <img src="img/reaktor.png" /><br />
+                <a class="source">src: reaktor.com</a>
+                </section>
+
+                <section>
+                <h2></h2>
+                <img src="img/houston.jpg" />
+                <a class="source">http://www.universetoday.com/45984/first-men-on-the-moon/</a>
+                </section>
+
+                <section>
+                <h2>C++ vs JavaScript</h2>
+                <table>
+                    <tr>
+                        <td>C++</td>
+                        <td>compiled</td>
+                        <td>statically typed</td>
+                        <td>strongly typed</td>
+                    </tr>
+                    <tr>
+                        <td>JS</td>
+                        <td>interpreted</td>
+                        <td>dynamically typed</td>
+                        <td>loosely typed</td>
+                    </tr>
+                </table>
+                <div class="fragment">
+                    <img src="img/apples-oranges.png" /><br />
+                    <a class="source">https://thenewtag.wordpress.com/2010/10/20/apples-oranges-and-education-reform/</a>
+                </div>
+                </section>
+
+                <section>
+                <h2>creation</h2>
+                <div class="fragment" style="display: inline-block">
+                	<span>C++: years.</span><br />
+                    <img src="img/ev-1.png" style="height: 400px;" />
+				</div>
+                <div class="fragment" style="display: inline-block;">
+                	<span>JS: 10 days <a href="https://www.computer.org/csdl/mags/co/2012/02/mco2012020007.html">(src)</span></br />
+                    <img src="img/ev-2.png" style="height: 400px;" />
+                </div>
+				<br />
+				<a class="source fragment">orig: http://i.ebayimg.com/images/i/271152428771-0-1/s-l1000.jpg</a>
+                </section>
+
+                <section>
+                <h2>diversity</h2>
+                <pre class="vimcodeblock"><span class="PreProc">#if (BOOST_UNITS_HAS_BOOST_TYPEOF)</span>
+<span class="PreProc">    #include </span><span class="Constant">&lt;boost/typeof/typeof.hpp&gt;</span>
+    <span class="Comment">///INTERNAL ONLY</span>
+<span class="PreProc">    #define BOOST_UNITS_HAS_TYPEOF          </span><span class="Constant">1</span>
+<span class="PreProc">#else</span>
+<span class="PreProc">    #if (__GNUC__ &amp;&amp; </span><span class="Constant">__cplusplus</span><span class="PreProc"> &amp;&amp; __GNUC__ &gt;= </span><span class="Constant">3</span><span class="PreProc">)</span>
+        <span class="Comment">///INTERNAL ONLY</span>
+<span class="PreProc">        #define BOOST_UNITS_HAS_TYPEOF          </span><span class="Constant">1</span>
+        <span class="Comment">///INTERNAL ONLY</span>
+<span class="PreProc">        #define BOOST_UNITS_HAS_GNU_TYPEOF      </span><span class="Constant">1</span>
+<span class="PreProc">    #elif defined(__MWERKS__)</span>
+        <span class="Comment">///INTERNAL ONLY</span>
+<span class="PreProc">        #define BOOST_UNITS_HAS_TYPEOF          </span><span class="Constant">1</span>
+        <span class="Comment">///INTERNAL ONLY</span>
+<span class="PreProc">        #define BOOST_UNITS_HAS_MWERKS_TYPEOF   </span><span class="Constant">1</span>
+<span class="PreProc">    #else</span>
+        <span class="Comment">///INTERNAL ONLY</span>
+<span class="PreProc">        #define BOOST_UNITS_HAS_TYPEOF          </span><span class="Constant">0</span>
+<span class="PreProc">    #endif</span>
+<span class="PreProc">#endif</span></pre>
+                </section>
+    
+                <section>
+                <h2>diversity</h2>
+                <pre class="vimcodeblock"><span class="Statement">if</span> (<span class="Statement">typeof</span> <span class="Statement">document</span>.hidden !== <span class="Constant">&quot;undefined&quot;</span>) <span class="Identifier">{</span> <span class="Comment">// Opera 12.10, Firefox 18+</span>
+  hidden = <span class="Constant">&quot;hidden&quot;</span>;
+  visibilityChange = <span class="Constant">&quot;visibilitychange&quot;</span>;
+<span class="Identifier">}</span> <span class="Statement">else</span> <span class="Statement">if</span> (<span class="Statement">typeof</span> <span class="Statement">document</span>.msHidden !== <span class="Constant">&quot;undefined&quot;</span>) <span class="Identifier">{</span>
+  hidden = <span class="Constant">&quot;msHidden&quot;</span>;
+  visibilityChange = <span class="Constant">&quot;msvisibilitychange&quot;</span>;
+<span class="Identifier">}</span> <span class="Statement">else</span> <span class="Statement">if</span> (<span class="Statement">typeof</span> <span class="Statement">document</span>.webkitHidden !== <span class="Constant">&quot;undefined&quot;</span>) <span class="Identifier">{</span>
+  hidden = <span class="Constant">&quot;webkitHidden&quot;</span>;
+  visibilityChange = <span class="Constant">&quot;webkitvisibilitychange&quot;</span>;
+<span class="Identifier">}</span>
+</pre>
+                </section>
+
+				<section>
+				<h2>diversity</h2>
+				<img src="img/js-diversity.png" />
+				</section>
+
+				<section>
+				<h2>interest: C++/JS</h2>
+				<img src="img/trends.png" />
+				</section>
+
+				<section>
+				<h2>interest: C++/JS/Python/PHP</h2>
+				<img src="img/trends-more.png" />
+				</section>
+
+				<section>
+				<h2>interest: C++/JS/Python/PHP + %</h2>
+				<img src="img/trends-alcohol.png" />
+				</section>
+
+				<section>
+				<h2>C++ / operator%</h2>
+				<img src="img/trends-alcohol-2.png" />
+				</section>
+
+				<section>
+				<img src="img/cave.png" />
+				</section>
+
+                <section>
+                <h2>libraries</h2>
+                </section>
+
+                <section>
+                <h2>example JS lib</h2>
+				<img src="img/example-js-lib.png" />
+				<a class="source">http://www.haneycodes.net/npm-left-pad-have-we-forgotten-how-to-program/</a>
+                </section>
+
+                <section>
+                <h2>mkdir in C++</h2>
+                <div class="fragment" >
+                    <img src="img/boost.png" /><br />
+                    <a class="source">http://devrt.tk/marketplace/content/533f97111806a6b5b374c1ab/icon</a>
+                </div>
+                </section>
+
+                <section>
+                <h2>mkdir in JS</h2>
+                <img class="fragment" src="img/js-fsextra.png" />
+                <img class="fragment" src="img/js-mkdir.png" />
+                <img class="fragment" src="img/js-safemkdir.png" />
+                <img class="fragment" src="img/js-mkdirp.png" />
+                <img class="fragment" src="img/js-makedirs.png" style="position: fixed; top: 10px;" />
+                <img class="fragment" src="img/js-mkdirparents.png" style="position: fixed; bottom: 10px;" />
+                <img class="fragment" src="img/js-mkpath.png" style="position: fixed; top: 10px; left: -210px;" />
+                <img class="fragment" src="img/js-mksubdir.png" style="position: fixed; bottom: -50px; left: -200px;" />
+                <img class="fragment" src="img/js-mkdirrecursive.png" style="position: fixed; bottom: -100px; right: -100px;" />
+                <img class="fragment" src="img/js-fsmkdirp.png" style="position: fixed; top: 120px; left: -150px;" />
+                </section>
+
+            </div>
+
+        </div>
+
+        <script src="reveal.js/lib/js/head.min.js"></script>
+        <script src="reveal.js/js/reveal.js"></script>
+
+        <script>
+
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: false,
+                progress: true,
+                history: true,
+                center: true,
+                keyboard: {
+                    38: 'prev',
+                    40: 'next'
+                },
+
+                transition: 'none', // none/fade/slide/convex/concave/zoom
+
+                // Optional reveal.js plugins
+                dependencies: [
+                    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                    { src: 'reveal.js/plugin/notes/notes.js', async: true }
+                ]
+            });
+
+        </script>
+    </body>
+</html>
